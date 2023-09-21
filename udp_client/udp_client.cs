@@ -9,18 +9,18 @@ class UDPClient
     {
         try
         {
-        Console.WriteLine("Type text to send:");
-        string input = Console.ReadLine();
-        Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            Console.WriteLine("Type text to send:");
+            string input = Console.ReadLine();
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-        IPAddress broadcast = IPAddress.Parse("127.0.0.1");
+            IPAddress broadcast = IPAddress.Parse("127.0.0.1");
 
-        byte[] sendbuf = Encoding.ASCII.GetBytes(input);
-        IPEndPoint ep = new IPEndPoint(broadcast, 11000);
+            byte[] sendbuf = Encoding.ASCII.GetBytes(input);
+            IPEndPoint ep = new IPEndPoint(broadcast, 11000);
 
-        s.SendTo(sendbuf, ep);
+            s.SendTo(sendbuf, ep);
 
-        Console.WriteLine("Message sent to the broadcast address");
+            Console.WriteLine("Message sent to the broadcast address");
 
         }
         catch (Exception ex)
