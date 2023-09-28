@@ -5,7 +5,7 @@ using System.Text;
 
 public class UDPListener
 {
-    private const int listenPort = 9100;
+    private const int listenPort = 11000;
 
     private static void StartListener()
     {
@@ -19,8 +19,8 @@ public class UDPListener
                 Console.WriteLine("Waiting for broadcast");
                 byte[] bytes = listener.Receive(ref groupEP);
 
-                Console.WriteLine($"Received broadcast from {groupEP} :");
-                Console.WriteLine($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+                Console.WriteLine($"Received broadcast from {groupEP}:");
+                Console.WriteLine($"{Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
             }
         }
         catch (SocketException e)

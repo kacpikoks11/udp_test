@@ -10,10 +10,12 @@ class UDPClient
         try
         {
             Console.WriteLine("Type text to send:");
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
+            if (input == null)
+                throw new Exception("No input");
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            IPAddress broadcast = IPAddress.Parse("127.0.0.1");
+            IPAddress broadcast = IPAddress.Parse("192.168.1.255"); // 127.0.0.1 - loopback - do siebie, 192.168.1.255 - broadcast
 
             byte[] sendbuf = Encoding.ASCII.GetBytes(input);
             IPEndPoint ep = new IPEndPoint(broadcast, 11000);
